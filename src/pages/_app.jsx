@@ -1,19 +1,19 @@
-import { useState } from 'react'
-import { ThemeProvider } from 'styled-components'
-import { defaultTheme, darkTheme } from 'theme'
+import { Provider } from 'react-redux'
+import store from 'store'
+
 import GlobalStyle from 'components/global-style'
+import Layout from 'components/layout'
 
 import '@fontsource/roboto-mono'
 
 function MyApp({ Component, pageProps }) {
-  const [useDarkTheme, setUseDarkTheme] = useState(false)
   return (
-    <>
-      <GlobalStyle />
-      <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
+    <Provider store={store}>
+      <Layout>
+        <GlobalStyle />
         <Component {...pageProps} />
-      </ThemeProvider>
-    </>
+      </Layout>
+    </Provider>
   )
 }
 

@@ -1,6 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styled from 'styled-components'
+
+import { useDispatch } from 'react-redux'
+import { darkTheme, defaultTheme } from 'slices/theme'
 
 import {
   PrimaryButton,
@@ -38,9 +40,12 @@ const Title = styled.h1`
 `
 
 export default function Home() {
+  const dispatch = useDispatch()
+
   return (
     <>
       <Head>
+        <meta charSet="utf-8" />
         <title>Buttons </title>
       </Head>
       <Container>
@@ -54,7 +59,7 @@ export default function Home() {
               border: '2px solid #000',
               marginTop: '60px',
             }}
-            onClick={() => {}}
+            onClick={() => dispatch(darkTheme())}
           >
             Dark theme
           </button>
@@ -67,7 +72,7 @@ export default function Home() {
               border: '2px solid #000',
               marginTop: '60px',
             }}
-            onClick={() => {}}
+            onClick={() => dispatch(defaultTheme())}
           >
             Default theme
           </button>
