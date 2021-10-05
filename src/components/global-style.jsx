@@ -6,12 +6,11 @@ const styled = { createGlobalStyle }
 const GlobalStyle = styled.createGlobalStyle`
   ${normalize()}
 
-  html,
   body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+    font-size: 16px;
 
     background-color: ${(props) => props.theme.backgroundColor};
     font-family: ${(props) => props.theme.primaryFont};

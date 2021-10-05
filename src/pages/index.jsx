@@ -9,6 +9,7 @@ import {
   SecondaryButton,
   TertiaryButton,
 } from 'components/button'
+import Modal from 'components/modal'
 
 const Container = styled.div`
   min-height: 100vh;
@@ -107,6 +108,9 @@ export default function Home() {
           <TertiaryButton modifiers={['error', 'secondaryButtonError']}>
             Error
           </TertiaryButton>
+        </Section>
+        <Section>
+          <Modal />
         </Section>
       </Container>
     </>
