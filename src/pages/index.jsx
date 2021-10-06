@@ -3,12 +3,14 @@ import styled from 'styled-components'
 
 import { useDispatch } from 'react-redux'
 import { darkTheme, defaultTheme } from 'slices/theme'
+import { showDialog } from 'slices/dialog'
 
 import {
   PrimaryButton,
   SecondaryButton,
   TertiaryButton,
 } from 'components/button'
+
 import Modal from 'components/modal'
 
 const Container = styled.div`
@@ -40,6 +42,15 @@ const Title = styled.h1`
   color: ${(props) => props.theme.textColor};
 `
 
+const Button = styled.button`
+  margin: 0 16px 24px;
+  padding: 8px;
+  background: none;
+  cursor: pointer;
+  border: 2px solid #000;
+  margin-top: 60px;
+`
+
 export default function Home() {
   const dispatch = useDispatch()
 
@@ -51,32 +62,11 @@ export default function Home() {
       </Head>
       <Container>
         <ButtonBox>
-          <button
-            style={{
-              margin: '0 16px 24px',
-              padding: '8px',
-              background: 'none',
-              cursor: 'pointer',
-              border: '2px solid #000',
-              marginTop: '60px',
-            }}
-            onClick={() => dispatch(darkTheme())}
-          >
-            Dark theme
-          </button>
-          <button
-            style={{
-              margin: '0 16px 24px',
-              padding: '8px',
-              background: 'none',
-              cursor: 'pointer',
-              border: '2px solid #000',
-              marginTop: '60px',
-            }}
-            onClick={() => dispatch(defaultTheme())}
-          >
+          <Button onClick={() => dispatch(darkTheme())}>Dark theme</Button>
+          <Button onClick={() => dispatch(defaultTheme())}>
             Default theme
-          </button>
+          </Button>
+          <Button onClick={() => dispatch(showDialog())}>Sign up</Button>
         </ButtonBox>
         <Section>
           <Title>App</Title>
