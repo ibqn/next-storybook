@@ -12,6 +12,8 @@ const GlobalStyle = styled.createGlobalStyle`
 
     font-size: 16px;
 
+    ${(props) => props.showDialog && `overflow: hidden;`}
+
     background-color: ${(props) => props.theme.backgroundColor};
     font-family: ${(props) => props.theme.primaryFont};
 

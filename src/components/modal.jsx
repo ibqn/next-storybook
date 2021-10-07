@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Image from 'next/image'
+import { animated, useSpring } from 'react-spring'
 
 import { PrimaryButton } from 'components/button'
 import SignUp from 'components/illustrations/sign-up.svg'
@@ -16,7 +17,7 @@ const Curtain = styled.div`
   width: 100%;
   height: 100%;
   z-index: 100;
-  display: flex;
+  display: ${(props) => (props.showDialog ? `flex` : `none`)};
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -65,25 +66,32 @@ const Modal = () => {
   const dispatch = useDispatch()
   const show = useSelector(dialogSelector)
 
+  const animation = useSpring({
+    opacity: show ? 1 : 0,
+    transform: show ? `translateY(0)` : `translateY(-100%)`,
+  })
+
   console.log('dialog', show)
 
-  if (!show) return null
+  // if (!show) return null
 
   return (
-    <Curtain>
-      <ModalWrapper>
-        <CloseButton onClick={() => dispatch(hideDialog())}>
-          <CloseIcon />
-        </CloseButton>
-        <Image src={SignUp} alt="Sign up for an account!" />
-        <SignUpHeader>Sign Up</SignUpHeader>
-        <SignUpText>
-          Sign up today to get access to all of our content and features!
-        </SignUpText>
-        <PrimaryButton onClick={() => console.log('You signed up!')}>
-          Sign Up
-        </PrimaryButton>
-      </ModalWrapper>
+    <Curtain showDialog={show}>
+      <animated.div style={animation}>
+        <ModalWrapper>
+          <CloseButton onClick={() => dispatch(hideDialog())}>
+            <CloseIcon />
+          </CloseButton>
+          <Image src={SignUp} alt="Sign up for an account!" />
+          <SignUpHeader>Sign Up</SignUpHeader>
+          <SignUpText>
+            Sign up today to get access to all of our content and features!
+          </SignUpText>
+          <PrimaryButton onClick={() => console.log('You signed up!')}>
+            Sign Up
+          </PrimaryButton>
+        </ModalWrapper>
+      </animated.div>
     </Curtain>
   )
 }
