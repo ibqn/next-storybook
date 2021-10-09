@@ -1,5 +1,5 @@
-import { blue, neutral, yellow, green, red } from './colors'
-import { primaryFont, typeScale } from './typography'
+import { blue, neutral, yellow, green, red } from 'theme/colors'
+import { primaryFont, typeScale } from 'theme/typography'
 
 const defaultTheme = {
   backgroundColor: neutral[100], //'white',
