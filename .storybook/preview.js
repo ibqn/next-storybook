@@ -10,6 +10,19 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: 'light',
+    values: [
+      {
+        name: 'light',
+        value: defaultTheme.backgroundColor,
+      },
+      {
+        name: 'dark',
+        value: darkTheme.backgroundColor,
+      },
+    ],
+  },
 }
 
 export const globalTypes = {
