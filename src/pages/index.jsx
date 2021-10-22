@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled from 'styled-components'
 
 import { useDispatch } from 'react-redux'
-import { darkTheme, defaultTheme } from 'slices/theme'
+import { darkTheme, defaultTheme, toggleTheme } from 'slices/theme'
 import { showDialog } from 'slices/dialog'
 
 import {
@@ -66,6 +66,7 @@ export default function Home() {
           <Button onClick={() => dispatch(defaultTheme())}>
             Default theme
           </Button>
+          <Button onClick={() => dispatch(toggleTheme())}>Theme toggle</Button>
           <Button onClick={() => dispatch(showDialog())}>Sign up</Button>
         </ButtonBox>
         <Section>
